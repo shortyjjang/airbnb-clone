@@ -8,7 +8,7 @@ import UserMenu from "./usermenu";
 
 export default function Navbar() {
   return (
-    <div className="fixed w-full z-10 shadow-sm">
+    <div className="sticky w-full z-10 shadow-sm">
       <div
         className="py-4 border-b-[1px] "
       >

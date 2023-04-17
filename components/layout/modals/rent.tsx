@@ -94,19 +94,21 @@ export default function RentModal() {
 
     setIsLoading(true)
 
-    axios.post('', data)
-      .then(() => {
-        toast.success('Listing created')
-        router.refresh()
-        reset()
-        setStep(STEPS.CATEGORY)
-        rentModal.onClose()
-      })
-      .catch(e => {
-        console.log(e)
-        toast.error('Failed listing upload')
-      })
-      .finally(() => setIsLoading(false))
+    console.log(data)
+
+    // axios.post('', data)
+    //   .then(() => {
+    //     toast.success('Listing created')
+    //     router.refresh()
+    //     reset()
+    //     setStep(STEPS.CATEGORY)
+    //     rentModal.onClose()
+    //   })
+    //   .catch(e => {
+    //     console.log(e)
+    //     toast.error('Failed listing upload')
+    //   })
+    //   .finally(() => setIsLoading(false))
   }
 
   const secondaryActionLabel = useMemo(() => {
