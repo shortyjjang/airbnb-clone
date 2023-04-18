@@ -1,4 +1,5 @@
 
+'use client';
 import ToasterProvider from "../providers/toasterprovider"
 import RegisterModal from "./modals/register"
 import Navbar from "./navbar"

@@ -1,3 +1,4 @@
+'use client';
 import { useCallback, useState } from 'react'
 import { TbPhotoPlus } from 'react-icons/tb';
 import Image from 'next/image';

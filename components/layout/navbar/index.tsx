@@ -1,4 +1,4 @@
-//'use client';
+'use client';
 
 import Container from "../container";
 import Categories from "./categories";

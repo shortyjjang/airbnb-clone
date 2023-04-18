@@ -1,3 +1,4 @@
+'use client';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 import useFavorite from "./hooks/useFavorite"
 import { SafeUser } from "./types/next-auth"

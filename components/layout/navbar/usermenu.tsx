@@ -1,3 +1,4 @@
+'use client';
 
 import { AiOutlineMenu, AiOutlineUser } from 'react-icons/ai'
 import {useState} from 'react'
