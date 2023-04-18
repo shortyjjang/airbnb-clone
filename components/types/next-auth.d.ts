@@ -1,38 +1,24 @@
-import NextAuth, {DefaultSession, ISODateString} from 'next-auth'
-export type userType = {
-  email: string
-  name: string
-  password: string
-  image:string
-}
-export type LocationProps = {
-  "value": string,
-  "label": string,
-  "flag": string,
-  "lating": number[],
-  "region": string
-}
-export type ListingProps = {
-  id: string,
-  category:string
-  location: LocationProps
-  guestCount: number
-  roomCount: number
-  bathroomCount: number
-  imageSrc: string
-  price: number
-  title: string
-  description:string
-  locationValue: string
-}
+import { Listing, Reservation, User } from "@prisma/client";
 
-export type ReservationType = {
-  totalPrice: number
-  startDate: ISODateString
-  endDate: ISODateString
-}
-declare module 'next-auth' {
-  interface Session {
-    user: userType & DefaultSession['user']
-  }
-}
+export type SafeListing = Omit<Listing, "createdAt"> & {
+  createdAt: string;
+};
+
+export type SafeReservation = Omit<
+  Reservation, 
+  "createdAt" | "startDate" | "endDate" | "listing"
+> & {
+  createdAt: string;
+  startDate: string;
+  endDate: string;
+  listing: SafeListing;
+};
+
+export type SafeUser = Omit<
+  User,
+  "createdAt" | "updatedAt" | "emailVerified"
+> & {
+  createdAt: string;
+  updatedAt: string;
+  emailVerified: string | null;
+};

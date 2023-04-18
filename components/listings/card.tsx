@@ -1,20 +1,20 @@
 import { useRouter } from "next/navigation";
-import { ListingProps, userType, ReservationType } from "../types/next-auth";
 import { useCallback, useMemo } from 'react'
 import useCountries from "../hooks/useCountries";
 import { format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../heart";
 import Button from "../button";
+import { SafeListing, SafeReservation, SafeUser } from "../types/next-auth";
 
 interface ListCardProps {
-  data: ListingProps
-  reservation?: ReservationType
+  data: SafeListing
+  reservation?: SafeReservation
   onAction?: (id: string) => void
   disabled?: boolean
   actionLabel?: string;
   actionId?:string
-  user?: userType | null
+  currentUser: SafeUser | null
 }
 export default function ListingCard({
   data,
@@ -22,8 +22,8 @@ export default function ListingCard({
   disabled,
   actionLabel,
   actionId = '',
-  user,
-  reservation
+  reservation,
+  currentUser
 }:ListCardProps) {
   const router = useRouter()
   const { getByValue } = useCountries()
@@ -60,7 +60,7 @@ export default function ListingCard({
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
           <Image src={data.imageSrc} alt="listing" fill className="object-cover scale-110 h-full w-full group-hover:scale-100 transition" />
           <div className="absolute top-3 right-3">
-            <HeartButton listingId={data.id} />
+            <HeartButton currentUser={currentUser} listingId={data.id} />
           </div>
         </div>
         <div className="font-semibold text-lg">

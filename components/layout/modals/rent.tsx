@@ -2,7 +2,6 @@
 import {useState, useMemo} from 'react'
 import {
   FieldValues,
-  SubmitHandler,
   useForm
 } from 'react-hook-form'
 import useRentModal from "../../hooks/useRentModal"
@@ -15,7 +14,6 @@ import dynamic from 'next/dynamic'
 import Counter from '../../inputs/Counter'
 import ImageUpload from '../../inputs/imageupload'
 import Input from '../../inputs'
-import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 
@@ -95,6 +93,11 @@ export default function RentModal() {
     setIsLoading(true)
 
     console.log(data)
+    toast.success('Listing created')
+    router.refresh()
+    reset()
+    setStep(STEPS.CATEGORY)
+    rentModal.onClose()
 
     // axios.post('', data)
     //   .then(() => {

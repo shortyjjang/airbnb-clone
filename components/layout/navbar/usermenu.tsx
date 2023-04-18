@@ -12,7 +12,7 @@ export default function UserMenu() {
   const loginModal = useLoginModal()
   const rentModal = useRentModal()
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const { data: session, status } = useSession()
+  const { status } = useSession()
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap3">
